@@ -4,5 +4,5 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: URL }),
   endpoints: (builder) => ({}),
-  tagTypes: ["songs", "artists", "playlists"],
+  tagTypes: ["auth", "songs", "artists", "playlists", "search"],
 })

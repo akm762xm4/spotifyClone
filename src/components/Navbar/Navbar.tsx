@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import logo from "../../assets/Spotify_Logo_RGB_Green.png"
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/20/solid"
-import SearchForm from "../../features/search/SearchForm"
+import SearchForm from "../../features/search/form/SearchForm"
 const Navbar = () => {
   const navigate = useNavigate()
 

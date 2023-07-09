@@ -1,7 +1,7 @@
 import { api } from "../../../app/services/server-api"
 import { Track } from "../../songs/types"
 import { Artist } from "../types"
-import { artistIds } from "../artistsIds"
+import { artistIds } from "./artistsIds"
 
 const token = localStorage.getItem("token")
 const artistsApi = api.injectEndpoints({
@@ -16,6 +16,7 @@ const artistsApi = api.injectEndpoints({
       }),
       providesTags: ["artists"],
     }),
+
     getArtists: builder.query<Artist[], void>({
       query: () => ({
         url: `/artists?ids=${artistIds}`,
@@ -27,7 +28,9 @@ const artistsApi = api.injectEndpoints({
       transformResponse: (res: any) => {
         return res?.artists
       },
+      providesTags: ["artists"],
     }),
+
     getArtistTracks: builder.query<Track[], string | undefined>({
       query: (id) => ({
         url: `/artists/${id}/top-tracks?country=IN`,
@@ -37,10 +40,24 @@ const artistsApi = api.injectEndpoints({
           Authorization: `Bearer ${token}`,
         },
       }),
-      providesTags: ["artists"],
       transformResponse: (res: any) => {
         return res?.tracks
       },
+      providesTags: ["artists"],
+    }),
+
+    getRelatedArtists: builder.query<Artist[], string | undefined>({
+      query: (id) => ({
+        url: `artists/${id}/related-artists`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+      transformResponse: (res: any) => {
+        return res.artists
+      },
+      providesTags: ["artists"],
     }),
   }),
 })
@@ -49,4 +66,5 @@ export const {
   useGetArtistQuery,
   useGetArtistTracksQuery,
   useGetArtistsQuery,
+  useGetRelatedArtistsQuery,
 } = artistsApi

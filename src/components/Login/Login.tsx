@@ -16,7 +16,7 @@ export const Login = () => {
     } else if (error) {
       console.log("Error", error)
     }
-  }, [isSuccess])
+  }, [isSuccess, token, error])
 
   return <button onClick={() => getToken()}>Login</button>
 }

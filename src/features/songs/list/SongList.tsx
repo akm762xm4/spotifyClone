@@ -1,20 +1,17 @@
 import { useGetSongsQuery } from "../api/songsApi"
 import { SongItem } from "../item/SongItem"
 import { Loader } from "../../../components/Loader/Loader"
-import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 const SongsList = () => {
-  let { q } = useParams()
-  if (!q) {
-    q = "alone"
-  }
   const {
     data: songs,
     isFetching,
     isLoading,
     error,
     isSuccess,
-  } = useGetSongsQuery(q)
+  } = useGetSongsQuery("arijit")
+
+  songs && console.log("Songs::", songs)
 
   error && console.log("Error::", error)
 

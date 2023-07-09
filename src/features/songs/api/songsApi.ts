@@ -28,6 +28,20 @@ const songsApi = api.injectEndpoints({
         },
       }),
     }),
+    recommendations: builder.query<Track[], string | undefined>({
+      query: (id) => ({
+        url: `recommendations?seed_tracks=${id}`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+      transformResponse: (res: any) => {
+        return res.tracks
+      },
+      providesTags: ["songs"],
+    }),
   }),
 })
-export const { useGetSongsQuery, useGetSongQuery } = songsApi
+export const { useGetSongsQuery, useGetSongQuery, useRecommendationsQuery } =
+  songsApi

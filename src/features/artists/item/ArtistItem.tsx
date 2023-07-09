@@ -10,14 +10,14 @@ export const ArtistItem = ({ artist }: PropTypes) => {
       <img
         className="rounded-full shadow-gray-700 shadow-lg cursor-pointer "
         style={{
-          width: artist.images[2].width,
-          height: artist.images[2].height,
+          width: artist?.images[2]?.width,
+          height: artist?.images[2]?.height,
         }}
-        src={artist.images[0].url}
+        src={artist?.images[1]?.url}
       />
       <div className="flex flex-col items-center gap-2 ">
         <span
-          onClick={() => navigate(`${artist.id}`)}
+          onClick={() => navigate(`/artists/${artist.id}`)}
           className="text-3xl text-gray-300 cursor-pointer hover:underline"
         >
           {artist.name}

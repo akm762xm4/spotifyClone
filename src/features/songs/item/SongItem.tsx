@@ -16,7 +16,7 @@ export const SongItem = ({ song }: PropTypes) => {
           <img
             onClick={() => navigate(`/songs/${song.id}`)}
             className="m-1"
-            src={song.album.images[2].url}
+            src={song?.album?.images[2]?.url}
           />
           <span className="flex flex-col ">
             <div
@@ -26,10 +26,10 @@ export const SongItem = ({ song }: PropTypes) => {
               {song.name}
             </div>
             <div className="flex gap-1">
-              {song.artists.map((artist: any, i: number) => (
+              {song.artists.slice(0, 3).map((artist: any, i: number) => (
                 <div key={artist.id} className="font-normal mt-2">
                   {artist.name}
-                  {song.artists.length !== i + 1 ? "," : ""}
+                  {song.artists.slice(0, 3).length !== i + 1 ? "," : ""}
                 </div>
               ))}
             </div>

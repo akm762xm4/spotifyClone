@@ -1,8 +1,13 @@
-import { useGetArtistQuery, useGetArtistTracksQuery } from "../api/artistApi"
+import {
+  useGetArtistQuery,
+  useGetArtistTracksQuery,
+  useGetRelatedArtistsQuery,
+} from "../api/artistApi"
 import { useParams } from "react-router-dom"
 import { Loader } from "../../../components/Loader/Loader"
 import { HeartIcon } from "@heroicons/react/20/solid"
 import { ArtistSongList } from "../songsList/ArtistSongList"
+import { ArtistItem } from "../item/ArtistItem"
 export const ArtistInfo = () => {
   const { id } = useParams()
   const {
@@ -21,11 +26,21 @@ export const ArtistInfo = () => {
 
   // tracks && console.log("Track::", tracks)
 
+  const {
+    data: artists,
+    isLoading: isArtistsLoading,
+    isFetching: isArtistsFetching,
+  } = useGetRelatedArtistsQuery(id)
+
+  artists && console.log("Artsits::", artists)
+
   if (
     isArtistLoading ||
     isArtistFetching ||
     isTrackLoading ||
-    isTrackFetching
+    isTrackFetching ||
+    isArtistsLoading ||
+    isArtistsFetching
   ) {
     return <Loader />
   }
@@ -34,7 +49,7 @@ export const ArtistInfo = () => {
     <>
       <div className="flex gap-4 p-5 pt-[60px] bg-gradient-to-tr from-[#f8ff6d] to-[#4a3c15] z-0">
         <img
-          className="z-10 shadow-xl shadow-[#00000092]"
+          className="z-10 shadow-xl shadow-[#00000092] rounded-md"
           src={artist?.images[1].url}
         />
         <span className="flex flex-col justify-end gap-2 z-10">
@@ -60,6 +75,16 @@ export const ArtistInfo = () => {
         {tracks?.map((track) => {
           return <ArtistSongList key={track.id} song={track} />
         })}
+      </div>
+      <div>
+        <div className="text-3xl text-gray-400 bg-[#202020] px-3 py-2">
+          Artists related to {artist?.name}
+        </div>
+        <div className="grid grid-cols-3 bg-[#202020] pt-3">
+          {artists?.slice(0, 6).map((artist) => {
+            return <ArtistItem key={artist.id} artist={artist} />
+          })}
+        </div>
       </div>
     </>
   )

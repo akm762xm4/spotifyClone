@@ -14,6 +14,7 @@ const authApi = api.injectEndpoints({
         },
         body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
       }),
+      invalidatesTags: ["auth"],
     }),
   }),
 })

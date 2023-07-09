@@ -7,7 +7,7 @@ interface PropTypes {
 const PlayListItem = ({ playlist }: PropTypes) => {
   const navigate = useNavigate()
   return (
-    <div className="flex flex-col justify-center gap-2 items-center p-1 border-2 border-white">
+    <div className="flex flex-col justify-center gap-2 items-center p-1">
       <img src={playlist.images[0].url} />
       <span
         onClick={() => navigate(`/playlists/${playlist.id}`)}

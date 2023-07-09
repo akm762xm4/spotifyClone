@@ -4,6 +4,7 @@ import { Protected } from "./Protected"
 import { Login } from "../components/Login/Login"
 import { ArtistsModule } from "../pages/Artists/ArtistsModule"
 import { PlaylistModule } from "../pages/Playlists/PlaylistModule"
+import { Result } from "../features/search/result/Result"
 const Routes = () => {
   const location = useLocation()
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
         <Route path="songs/*" element={<SongsModule />} />
         <Route path="artists/*" element={<ArtistsModule />} />
         <Route path="playlists/*" element={<PlaylistModule />} />
+        <Route path="search/:q" element={<Result />} />
       </Route>
     </Routing>
   )

@@ -6,7 +6,7 @@ const SearchForm = () => {
   const { register, handleSubmit } = useForm()
 
   const onSubmit = (data: any) => {
-    navigate(`/songs/search/${data.searchTerm}`)
+    navigate(`/search/${data.searchTerm}`)
   }
 
   return (
