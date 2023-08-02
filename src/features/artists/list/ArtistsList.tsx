@@ -8,7 +8,7 @@ export const ArtistsList = () => {
     return <Loader />
   }
   return (
-    <div className="grid grid-cols-3 bg-[#202020] pt-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 bg-[#202020] pt-3">
       {artists?.map((artist) => {
         return <ArtistItem key={artist.id} artist={artist} />
       })}

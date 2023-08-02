@@ -14,9 +14,9 @@ export const Result = () => {
 
   return (
     <>
-      <div className="grid grid-rows-1 grid-cols-2">
+      <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col bg-[#202020]">
-          <div className="text-3xl text-gray-400 px-3 py-2">
+          <div className="text-xl md:text-3xl text-gray-400 px-3 py-2">
             Top Tracks from {q}
           </div>
           {results?.tracks.items?.map((song) => (
@@ -24,7 +24,7 @@ export const Result = () => {
           ))}
         </div>
         <div className=" bg-[#202020]">
-          <div className="text-3xl text-gray-400 px-3 py-2">
+          <div className="text-xl md:text-3xl text-gray-400 px-3 py-2">
             Top Playlists from {q}
           </div>
           <div className="grid grid-cols-3  gap-2 pt-5">
@@ -35,10 +35,10 @@ export const Result = () => {
         </div>
       </div>
       <div className="bg-[#202020]">
-        <div className="text-3xl text-gray-400 px-3 py-2">
+        <div className="text-xl md:text-3xl text-gray-400 px-3 py-2">
           Top Artists from {q}
         </div>
-        <div className="grid grid-cols-3  pt-3">
+        <div className="grid grid-cols-2 md:grid-cols-3  pt-3">
           {results?.artists.items?.map((artist) => {
             return <ArtistItem key={artist.id} artist={artist} />
           })}

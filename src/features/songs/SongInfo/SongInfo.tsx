@@ -22,8 +22,8 @@ const SongInfo = () => {
   }
   return (
     <>
-      <div className="flex gap-4 p-5 pt-[60px] bg-gradient-to-tr from-[#ffa86d] to-[#584d2b] z-0 ">
-        <span className="flex flex-col gap-2">
+      <div className="flex flex-col md:flex-row gap-4 p-5 pt-[60px] bg-gradient-to-tr from-[#ffa86d] to-[#584d2b] z-0 ">
+        <span className="flex flex-col gap-2 items-center">
           <img
             className="z-10 shadow-xl shadow-[#00000092]"
             src={song.album.images[1].url}
@@ -40,12 +40,14 @@ const SongInfo = () => {
             )}
           </div>
         </span>
-        <span className="flex flex-col justify-end gap-4 z-10 pb-8">
+        <span className="flex flex-col justify-end gap-2 md:gap-4 z-10 pb-8">
           <div className="capitalize">{song.type}</div>
-          <div className="text-7xl">
-            {song.name.slice(0, song.name.indexOf("("))}
+          <div className="text-3xl md:text-7xl">
+            {song.name.includes("(")
+              ? song.name.slice(0, song.name.indexOf("("))
+              : song.name}
           </div>
-          <div className="flex gap-1 pt-2">
+          <div className="flex flex-col md:flex-row gap-1 pt-2">
             <span
               className="cursor-pointer hover:underline"
               onClick={() => navigate(`/artists/${song.artists[0]?.id}`)}
@@ -60,7 +62,7 @@ const SongInfo = () => {
       </div>
 
       <div className="flex flex-col bg-[#202020] ">
-        <div className="text-3xl text-gray-400 px-3 py-2">
+        <div className="textxl md:text-3xl text-gray-400 px-3 py-2">
           Recommended Songs
         </div>
         {recoms?.map((song) => (

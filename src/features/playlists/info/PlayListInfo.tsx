@@ -37,11 +37,11 @@ export const PlayListInfo = () => {
       >
         <span
           className="flex flex-col justify-end gap-2 pt-36 p-5 pb-4  text-[#ffffff]"
-          style={{ backdropFilter: "brightness(65%)" }}
+          style={{ backdropFilter: "brightness(35%)" }}
         >
           <div className="capitalize">{playlist.type}</div>
-          <div className="text-7xl font-bold">{playlist.name}</div>
-          <div className="py-2">{playlist.description}</div>
+          <div className="text-3xl md:text-7xl font-bold">{playlist.name}</div>
+          <div className="py-2 text-sm md:text-md">{playlist.description}</div>
           <span className="flex gap-1">
             <div>{playlist.followers.total.toLocaleString()} likes</div>
             <div>&bull;</div>

@@ -11,7 +11,7 @@ export default function PLTrackItem({ song }: PropTypes) {
       key={song.id}
       className="Item py-1 flex justify-between items-center text-white hover:bg-[#41414167] transition-all duration-150  "
     >
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <img
           onClick={() => navigate(`/songs/${song.id}`)}
           className="m-1"
@@ -20,15 +20,19 @@ export default function PLTrackItem({ song }: PropTypes) {
         <span className="flex flex-col ">
           <div
             onClick={() => navigate(`/songs/${song.id}`)}
-            className="text-xl hover:underline hover:text-white transition-all duration-150 cursor-pointer"
+            className="text-md md:text-xl hover:underline hover:text-white transition-all duration-150 cursor-pointer"
           >
-            {song.name}
+            {song.name.includes("(")
+              ? song.name.slice(0, song.name.indexOf("("))
+              : song.name}
           </div>
           <div className="flex gap-1">
-            {song.artists.map((artist: any, i: number) => (
-              <div key={artist.id} className="font-normal mt-2">
-                {artist.name}
-                {song.artists.length !== i + 1 ? "," : ""}
+            {song.artists.slice(0, 2).map((artist, i: number) => (
+              <div key={artist.id} className="font-light text-xs md:sm mt-2">
+                {artist.name.length >= 13
+                  ? artist.name.slice(0, artist.name.indexOf(" "))
+                  : artist.name}
+                {song.artists.slice(0, 2).length !== i + 1 ? "," : ""}
               </div>
             ))}
           </div>

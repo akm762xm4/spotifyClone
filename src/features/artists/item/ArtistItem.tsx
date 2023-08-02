@@ -10,21 +10,21 @@ export const ArtistItem = ({ artist }: PropTypes) => {
       <img
         className="rounded-full shadow-gray-700 shadow-lg cursor-pointer "
         style={{
-          width: artist?.images[2]?.width,
-          height: artist?.images[2]?.height,
+          width: 160,
+          height: 160,
         }}
         src={artist?.images[1]?.url}
       />
       <div className="flex flex-col items-center gap-2 ">
         <span
           onClick={() => navigate(`/artists/${artist.id}`)}
-          className="text-3xl text-gray-300 cursor-pointer hover:underline"
+          className="text-xl md:text-3xl text-gray-300 cursor-pointer hover:underline"
         >
           {artist.name}
         </span>
         <span className="text-sm">
           {artist.followers.total.toLocaleString()}{" "}
-          <span className="text-gray-300">Followers</span>
+          <span className="text-sm md:text-md text-gray-300">Followers</span>
         </span>
       </div>
     </div>

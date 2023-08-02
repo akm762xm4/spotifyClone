@@ -11,7 +11,7 @@ const PlayListItem = ({ playlist }: PropTypes) => {
       <img src={playlist.images[0].url} />
       <span
         onClick={() => navigate(`/playlists/${playlist.id}`)}
-        className="text-white text-xl py-2 cursor-pointer hover:underline"
+        className="text-white text-sm md:text-xl py-2 cursor-pointer hover:underline"
       >
         {playlist.name}
       </span>

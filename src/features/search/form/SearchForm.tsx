@@ -15,7 +15,7 @@ const SearchForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
-        className="rounded-md px-1"
+        className="rounded-md px-1 w-20 md:w-52 transition-all modNav:w-40 duration-150"
         autoComplete="off"
         type="text"
         {...register("searchTerm")}
