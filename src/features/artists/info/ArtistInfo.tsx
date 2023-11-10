@@ -16,23 +16,17 @@ export const ArtistInfo = () => {
     isFetching: isArtistFetching,
   } = useGetArtistQuery(id)
 
-  // artist && console.log("Artist::", artist)
-
   const {
     data: tracks,
     isLoading: isTrackLoading,
     isFetching: isTrackFetching,
   } = useGetArtistTracksQuery(id)
 
-  // tracks && console.log("Track::", tracks)
-
   const {
     data: artists,
     isLoading: isArtistsLoading,
     isFetching: isArtistsFetching,
   } = useGetRelatedArtistsQuery(id)
-
-  artists && console.log("Artsits::", artists)
 
   if (
     isArtistLoading ||
@@ -55,7 +49,7 @@ export const ArtistInfo = () => {
         <span className="flex flex-col justify-end gap-2 z-10">
           <div className="capitalize">{artist?.type}</div>
           <div className="text-3xl md:text-7xl">{artist?.name}</div>
-          <div className="flex">
+          <div className="flex gap-1">
             <span>
               {artist?.followers.total.toLocaleString("en-US")} Followers
             </span>

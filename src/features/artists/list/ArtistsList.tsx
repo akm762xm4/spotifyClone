@@ -3,7 +3,6 @@ import { ArtistItem } from "../item/ArtistItem"
 import { Loader } from "../../../components/Loader/Loader"
 export const ArtistsList = () => {
   const { data: artists, isLoading, isFetching } = useGetArtistsQuery()
-  // artists && console.log("Artists::", artists)
   if (isFetching || isLoading) {
     return <Loader />
   }

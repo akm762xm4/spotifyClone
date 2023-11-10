@@ -7,12 +7,12 @@ interface PropTypes {
 const PlayListItem = ({ playlist }: PropTypes) => {
   const navigate = useNavigate()
   return (
-    <div className="flex flex-col justify-center gap-2 items-center p-1">
+    <div
+      onClick={() => navigate(`/playlists/${playlist.id}`)}
+      className="flex flex-col justify-center gap-2 items-center p-1 cursor-pointer"
+    >
       <img src={playlist.images[0].url} />
-      <span
-        onClick={() => navigate(`/playlists/${playlist.id}`)}
-        className="text-white text-sm md:text-xl py-2 cursor-pointer hover:underline"
-      >
+      <span className="text-white text-sm md:text-xl py-2">
         {playlist.name}
       </span>
     </div>

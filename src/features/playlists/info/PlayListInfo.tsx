@@ -13,8 +13,6 @@ export const PlayListInfo = () => {
     isLoading: isTracksLoading,
     isFetching: isTracksFetching,
   } = useGetPlaylistTracksQuery(id)
-  // playlist && console.log("Playlist::", playlist)
-  // tracks && console.log("Tracks::", tracks.items)
 
   if (
     !playlist ||

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-const URL = "https://api.spotify.com/v1"
+const URL = import.meta.env.VITE_API_URL
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: URL }),

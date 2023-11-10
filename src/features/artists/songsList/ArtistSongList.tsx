@@ -20,7 +20,7 @@ export const ArtistSongList = ({ song }: PropTypes) => {
         <span className="flex flex-col ">
           <div
             onClick={() => navigate(`/songs/${song.id}`)}
-            className="text-xl hover:underline hover:text-white transition-all duration-150 cursor-pointer"
+            className="text-xl hover:text-white transition-all duration-150 cursor-pointer"
           >
             {song.name.includes("(")
               ? song.name.slice(0, song.name.indexOf("("))

@@ -16,8 +16,8 @@ export const CategoryItem = ({ category }: PropTypes) => {
     >
       <div
         onClick={() => navigate(`category/${category.id}`)}
-        className="hover:underline cursor-pointer py-4 text-5xl text-center text-white pb-52"
-        style={{ backdropFilter: "brightness(70%)" }}
+        className="cursor-pointer py-4 text-3xl md:text-5xl text-center text-white pb-52 antialiased"
+        style={{ backdropFilter: "brightness(80%)" }}
       >
         {category.name}
       </div>

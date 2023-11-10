@@ -3,6 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector"
 
 export const useAuth = () => {
   const token = useSelector((state: any) => state.auth.token)
-  const isAuthenticated = useMemo(() => token !== null, [token])
+  const isAuthenticated = useMemo(() => token, [token])
   return { isAuthenticated }
 }

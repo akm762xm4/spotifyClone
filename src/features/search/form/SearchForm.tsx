@@ -11,7 +11,7 @@ const SearchForm = () => {
 
   return (
     <form
-      className="flex gap-1 p-1 bg-gray-500 rounded-md "
+      className="flex gap-1 p-1  rounded-md "
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
@@ -21,7 +21,7 @@ const SearchForm = () => {
         {...register("searchTerm")}
       />
       <button
-        className="hover:bg-gray-300 rounded-md transition-all duration-150 p-1"
+        className="hover:text-gray-300 rounded-md transition-all duration-150 p-1"
         onClick={() => onSubmit}
       >
         <MagnifyingGlassIcon className="h-6 w-6" />

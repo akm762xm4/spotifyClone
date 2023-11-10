@@ -1,13 +1,15 @@
 import { api } from "../../../app/services/server-api"
+import { setToken } from "../authSlice"
 
-const CLIENT_ID: string = "4be3a1e5ac164c51b5a6dc1b064a7063"
-const CLIENT_SECRET: string = "22d732ac5327497280729d3fce8e8531"
+const CLIENT_ID: string = import.meta.env.VITE_CLIENT_ID
+const CLIENT_SECRET: string = import.meta.env.VITE_CLIENT_SECRET
+const TOKEN_URL: string = import.meta.env.VITE_TOKEN_URL
 
 const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getToken: builder.mutation<any, void>({
       query: () => ({
-        url: "https://accounts.spotify.com/api/token",
+        url: TOKEN_URL,
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -15,6 +17,10 @@ const authApi = api.injectEndpoints({
         body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
       }),
       invalidatesTags: ["auth"],
+      onQueryStarted: async (_api, { dispatch, queryFulfilled }) => {
+        const response = await queryFulfilled
+        dispatch(setToken(response.data?.access_token))
+      },
     }),
   }),
 })

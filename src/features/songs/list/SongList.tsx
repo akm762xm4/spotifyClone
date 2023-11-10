@@ -2,22 +2,28 @@ import { useGetSongsQuery } from "../api/songsApi"
 import { SongItem } from "../item/SongItem"
 import { Loader } from "../../../components/Loader/Loader"
 import { useEffect } from "react"
+import { useAuth } from "../../auth/hooks/useAuth"
+import { useGetTokenMutation } from "../../auth/api/authApi"
 const SongsList = () => {
   const {
     data: songs,
     isFetching,
     isLoading,
-    error,
     isSuccess,
   } = useGetSongsQuery("arijit")
 
-  songs && console.log("Songs::", songs)
-
-  error && console.log("Error::", error)
+  const { isAuthenticated } = useAuth()
+  const [getToken] = useGetTokenMutation()
 
   useEffect(() => {
     isSuccess && localStorage.setItem("songs", JSON.stringify(songs))
   }, [isSuccess])
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      getToken()
+    }
+  }, [getToken, isAuthenticated])
 
   if (isFetching || isLoading) {
     return <Loader />

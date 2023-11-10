@@ -9,12 +9,11 @@ export const PlayListList = () => {
     isLoading,
     isFetching,
   } = useGetPlaylistByCategoryQuery(catId)
-  // playlists && console.log("PlayLists::", playlists)
   if (isLoading || isFetching) {
     return <Loader />
   }
   return (
-    <div className="grid grid-cols-3 bg-[#202020] gap-2 pt-5">
+    <div className="grid grid-cols-3 md:grid-cols-4 bg-[#202020] gap-2 pt-5">
       {playlists?.map((playlist) => (
         <PlayListItem key={playlist.id} playlist={playlist} />
       ))}
