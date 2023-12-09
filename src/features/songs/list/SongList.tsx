@@ -2,9 +2,16 @@ import { useGetSongsQuery } from "../api/songsApi"
 import { SongItem } from "../item/SongItem"
 import { Loader } from "../../../components/Loader/Loader"
 import { useEffect } from "react"
-import { useAuth } from "../../auth/hooks/useAuth"
 import { useGetTokenMutation } from "../../auth/api/authApi"
 const SongsList = () => {
+  const [getToken] = useGetTokenMutation()
+  const token = localStorage.getItem("token")
+  useEffect(() => {
+    if (!token) {
+      getToken()
+    }
+  }, [getToken, token])
+
   const {
     data: songs,
     isFetching,
@@ -12,18 +19,9 @@ const SongsList = () => {
     isSuccess,
   } = useGetSongsQuery("arijit")
 
-  const { isAuthenticated } = useAuth()
-  const [getToken] = useGetTokenMutation()
-
   useEffect(() => {
     isSuccess && localStorage.setItem("songs", JSON.stringify(songs))
   }, [isSuccess])
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      getToken()
-    }
-  }, [getToken, isAuthenticated])
 
   if (isFetching || isLoading) {
     return <Loader />

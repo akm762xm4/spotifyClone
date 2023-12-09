@@ -1,5 +1,4 @@
 import { api } from "../../../app/services/server-api"
-import { setToken } from "../authSlice"
 
 const CLIENT_ID: string = import.meta.env.VITE_CLIENT_ID
 const CLIENT_SECRET: string = import.meta.env.VITE_CLIENT_SECRET
@@ -17,9 +16,9 @@ const authApi = api.injectEndpoints({
         body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
       }),
       invalidatesTags: ["auth"],
-      onQueryStarted: async (_api, { dispatch, queryFulfilled }) => {
+      onQueryStarted: async (_api, { queryFulfilled }) => {
         const response = await queryFulfilled
-        dispatch(setToken(response.data?.access_token))
+        localStorage.setItem("token", response.data?.access_token)
       },
     }),
   }),
