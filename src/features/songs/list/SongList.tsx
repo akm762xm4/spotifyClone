@@ -5,15 +5,15 @@ import { useEffect } from "react"
 import { useAuth } from "../../auth/hooks/useAuth"
 import { useGetTokenMutation } from "../../auth/api/authApi"
 const SongsList = () => {
+  const { isAuthenticated } = useAuth()
+  const [getToken] = useGetTokenMutation()
+
   const {
     data: songs,
     isFetching,
     isLoading,
     isSuccess,
   } = useGetSongsQuery("arijit")
-
-  const { isAuthenticated } = useAuth()
-  const [getToken] = useGetTokenMutation()
 
   useEffect(() => {
     isSuccess && localStorage.setItem("songs", JSON.stringify(songs))
