@@ -1,8 +1,8 @@
 import { api } from "../../../app/services/server-api"
 
-const CLIENT_ID: string = import.meta.env.VITE_CLIENT_ID
-const CLIENT_SECRET: string = import.meta.env.VITE_CLIENT_SECRET
-const TOKEN_URL: string = import.meta.env.VITE_TOKEN_URL
+const CLIENT_ID = "4be3a1e5ac164c51b5a6dc1b064a7063"
+const CLIENT_SECRET = "22d732ac5327497280729d3fce8e8531"
+const TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
