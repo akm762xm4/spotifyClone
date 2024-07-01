@@ -1,4 +1,4 @@
 export const RandomColorGenerator = () => {
-  let Randomcolor = Math.random().toString(16).substr(-6)
-  return Randomcolor
+  const randomColor = Math.random().toString(16).substr(-6)
+  return randomColor
 }

@@ -14,7 +14,7 @@ const songsApi = api.injectEndpoints({
         },
       }),
       transformResponse: (res: Tracks) => {
-        let RES = res?.tracks?.items
+        const RES = res?.tracks?.items
         return RES
       },
       providesTags: ["songs"],

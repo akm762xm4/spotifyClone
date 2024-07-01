@@ -3,7 +3,7 @@ import { ArtistsList } from "../../features/artists/list/ArtistsList"
 import { ArtistInfo } from "../../features/artists/info/ArtistInfo"
 
 export const ArtistsModule = () => {
-  let elements = useRoutes([
+  const elements = useRoutes([
     { index: true, path: "", element: <ArtistsList /> },
     { path: ":id", element: <ArtistInfo /> },
   ])
